@@ -1,4 +1,15 @@
-# test_appbogado.py (continuación)
+# Importar bibliotecas necesarias
+import sys
+import os
+
+# Agregar el directorio del proyecto al path (ajusta la ruta según tu estructura de directorios)
+sys.path.append(os.path.abspath("../appbogado"))
+
+# Importar bibliotecas necesarias
+import pytest
+
+
+# Código del archivo tests/test_legal_processing.py
 
 def test_limpiar_texto():
     texto = "Este es un texto de prueba!! Con caracteres especiales... y espacios  en blanco."
@@ -31,4 +42,7 @@ def test_detectar_ayuda_y_compañerismo():
     texto = "María siempre está dispuesta a ayudar y apoyar a sus colegas en momentos difíciles."
     ayuda = detectar_ayuda_y_compañerismo(texto)
     assert len(ayuda) > 0
+
+# Ejecutar todas las pruebas
+pytest.main([__file__])
 

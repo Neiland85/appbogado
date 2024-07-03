@@ -1,4 +1,4 @@
-# test_appbogado.py (continuación)
+# Código del archivo tests/test_legal_processing.py
 
 def test_limpiar_texto():
     texto = "Este es un texto de prueba!! Con caracteres especiales... y espacios  en blanco."
@@ -32,3 +32,5 @@ def test_detectar_ayuda_y_compañerismo():
     ayuda = detectar_ayuda_y_compañerismo(texto)
     assert len(ayuda) > 0
 
+# Ejecutar todas las pruebas
+pytest.main([__file__])
