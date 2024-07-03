@@ -1,0 +1,39 @@
+# Crear el directorio de workflows de GitHub Actions
+mkdir -p .github/workflows
+touch .github/workflows/python-app.yml
+
+# Editar el archivo .github/workflows/python-app.yml con el siguiente contenido
+echo "
+name: Python application
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m venv venv
+        source venv/bin/activate
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        source venv/bin/activate
+        pytest
+" > .github/workflows/python-app.yml
+
+# Agregar el archivo de GitHub Actions a Git
+git add .github/workflows/python-app.yml
+
+# Realizar el commit y empujar los cambios
+git commit -m "Agregar configuración de GitHub Actions para ejecutar pruebas automáticamente"
+git push
+
