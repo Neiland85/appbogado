@@ -1,0 +1,23 @@
+import unittest
+
+class TestNLPModels(unittest.TestCase):
+
+    def test_detectar_mentiras(self):
+        # Caso de prueba para la función detectar_mentiras
+        self.assertEqual(detectar_mentiras("Texto de prueba"), "Resultado esperado")
+
+    def test_identificar_difamaciones(self):
+        # Caso de prueba para la función identificar_difamaciones
+        self.assertEqual(identificar_difamaciones("Texto de prueba"), "Resultado esperado")
+
+    def test_exigir_pruebas(self):
+        # Caso de prueba para la función exigir_pruebas
+        self.assertEqual(exigir_pruebas("Acusaciones de prueba"), "Resultado esperado")
+
+    def test_destruir_argumentos(self):
+        # Caso de prueba para la función destruir_argumentos
+        self.assertEqual(destruir_argumentos("Argumentos de prueba"), "Resultado esperado")
+
+if __name__ == '__main__':
+    unittest.main()
+
