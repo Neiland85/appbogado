@@ -1,0 +1,39 @@
+# appbogado/nlp_models.py
+
+from transformers import pipeline
+import spacy
+
+# Cargar modelos preentrenados
+mentira_detector = pipeline("text-classification", model="mrm8488/bert-small-finetuned-covid19-spa-lies", tokenizer="mrm8488/bert-small-finetuned-covid19-spa-lies")
+difamacion_detector = pipeline("text-classification", model="mrm8488/bert-tiny-finetuned-sentiment-spanish", tokenizer="mrm8488/bert-tiny-finetuned-sentiment-spanish")
+emocion_detector = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", tokenizer="j-hartmann/emotion-english-distilroberta-base")
+intencion_detector = pipeline("text-classification", model="unitary/toxic-bert", tokenizer="unitary/toxic-bert")
+resumen_extractor = pipeline("summarization", model="facebook/bart-large-cnn")
+
+# Cargar spaCy
+nlp = spacy.load("es_core_news_md")
+
+def detectar_mentiras(texto):
+    resultado = mentira_detector(texto)
+    return resultado
+
+def identificar_difamaciones(texto):
+    resultado = difamacion_detector(texto)
+    return resultado
+
+def detectar_emociones(texto):
+    resultado = emocion_detector(texto)
+    return resultado
+
+def clasificar_intenciones(texto):
+    resultado = intencion_detector(texto)
+    return resultado
+
+def extraer_resumen(texto):
+    resumen = resumen_extractor(texto)
+    return resumen
+
+def generar_respuesta(texto, modelo="facebook/blenderbot-400M-distill"):
+    generador_respuestas = pipeline("text-generation", model=modelo, tokenizer=modelo)
+    respuesta = generador_respuestas(texto)
+    return respuesta
