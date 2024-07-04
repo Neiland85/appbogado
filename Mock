@@ -1,0 +1,256 @@
+Pasos Detallados:
+Crear el archivo appbogado.py en la ubicación correcta:
+
+Asegúrate de estar en el directorio raíz de tu proyecto.
+Si el archivo appbogado.py no existe, créalo con el siguiente contenido.
+Mover el archivo appbogado.py a la carpeta Funciones.
+
+Realizar las operaciones de Git.
+
+Crear el Archivo appbogado.py y Moverlo
+Crear el archivo appbogado.py:
+sh
+Copiar código
+echo "import spacy
+Cargar el modelo de idioma
+nlp = spacy.load('es_core_news_md')
+
+def identificar_difamaciones(texto):
+doc = nlp(texto)
+difamaciones_detectadas = []
+for token in doc:
+if token.lower_ in ['difamación', 'calumnia', 'injuria']:
+difamaciones_detectadas.append(token.text)
+return difamaciones_detectadas
+
+def detectar_mentiras(texto):
+doc = nlp(texto)
+mentiras_detectadas = []
+for token in doc:
+if token.lower_ in ['mentira', 'falso']:
+mentiras_detectadas.append(token.text)
+return mentiras_detectadas
+
+def exigir_pruebas(acusaciones):
+pruebas_exigidas = []
+for acusacion in acusaciones:
+pruebas_exigidas.append(f'Exigir prueba para: {acusacion}')
+return pruebas_exigidas
+
+def destruir_argumentos(argumentos):
+argumentos_destruidos = []
+for argumento in argumentos:
+argumentos_destruidos.append(f'Destruido: {argumento}')
+return argumentos_destruidos
+
+Prueba de las funciones
+if name == 'main':
+texto = 'Este es un ejemplo de difamación y calumnia. Además, es una mentira y es falso.'
+acusaciones = ['acusación 1', 'acusación 2']
+argumentos = ['argumento insostenible 1', 'argumento insostenible 2']
+
+bash
+Copiar código
+print('Difamaciones detectadas:', identificar_difamaciones(texto))
+print('Mentiras detectadas:', detectar_mentiras(texto))
+print('Pruebas exigidas:', exigir_pruebas(acusaciones))
+print('Argumentos destruidos:', destruir_argumentos(argumentos))
+" > appbogado.py
+
+go
+Copiar código
+
+2. **Mover el archivo `appbogado.py` a la carpeta `Funciones`**:
+```sh
+mkdir -p appbogado/Funciones
+mv appbogado.py appbogado/Funciones/
+Agregar los cambios:
+sh
+Copiar código
+git add appbogado/Funciones/appbogado.py
+Comandos Completos
+Aquí tienes los comandos completos:
+
+sh
+Copiar código
+echo "import spacy
+
+# Cargar el modelo de idioma
+nlp = spacy.load('es_core_news_md')
+
+def identificar_difamaciones(texto):
+    doc = nlp(texto)
+    difamaciones_detectadas = []
+    for token in doc:
+        if token.lower_ in ['difamación', 'calumnia', 'injuria']:
+            difamaciones_detectadas.append(token.text)
+    return difamaciones_detectadas
+
+def detectar_mentiras(texto):
+    doc = nlp(texto)
+    mentiras_detectadas = []
+    for token in doc:
+        if token.lower_ in ['mentira', 'falso']:
+            mentiras_detectadas.append(token.text)
+    return mentiras_detectadas
+
+def exigir_pruebas(acusaciones):
+    pruebas_exigidas = []
+    for acusacion in acusaciones:
+        pruebas_exigidas.append(f'Exigir prueba para: {acusacion}')
+    return pruebas_exigidas
+
+def destruir_argumentos(argumentos):
+    argumentos_destruidos = []
+    for argumento in argumentos:
+        argumentos_destruidos.append(f'Destruido: {argumento}')
+    return argumentos_destruidos
+
+# Prueba de las funciones
+if __name__ == '__main__':
+    texto = 'Este es un ejemplo de difamación y calumnia. Además, es una mentira y es falso.'
+    acusaciones = ['acusación 1', 'acusación 2']
+    argumentos = ['argumento insostenible 1', 'argumento insostenible 2']
+
+    print('Difamaciones detectadas:', identificar_difamaciones(texto))
+    print('Mentiras detectadas:', detectar_mentiras(texto))
+    print('Pruebas exigidas:', exigir_pruebas(acusaciones))
+    print('Argumentos destruidos:', destruir_argumentos(argumentos))
+" > appbogado.py
+
+mkdir -p appbogado/Funciones
+mv appbogado.py appbogado/Funciones/
+git add appbogado/Funciones/appbogado.py
+Realizar Commit y Push
+Después de agregar el archivo, realiza el commit y push:
+
+sh
+Copiar código
+git commit -m "Add functions for detecting defamation, lies, demanding evidence, and destroying arguments in appbogado/Funciones"
+git pull origin main.js
+git push origin main.js
+Por favor, ejecuta estos comandos en tu terminal para organizar tu proyecto y realizar las operaciones de Git correspondientes. Si necesitas asistencia adicional, estaré aquí para ayudarte.
+
+
+
+
+qialo l solo y llvalo a s siio: git add appbogado/Funciones/appbogado.py
+
+[python] Vamos a seguir los pasos necesarios para crear el archivo appbogado.py, moverlo a la carpeta Funciones y luego realizar el comando git add.
+
+Crear el Archivo appbogado.py y Moverlo a Funciones
+Crear el Archivo appbogado.py:
+sh
+Copiar código
+echo "import spacy
+Cargar el modelo de idioma
+nlp = spacy.load('es_core_news_md')
+
+def identificar_difamaciones(texto):
+doc = nlp(texto)
+difamaciones_detectadas = []
+for token in doc:
+if token.lower_ in ['difamación', 'calumnia', 'injuria']:
+difamaciones_detectadas.append(token.text)
+return difamaciones_detectadas
+
+def detectar_mentiras(texto):
+doc = nlp(texto)
+mentiras_detectadas = []
+for token in doc:
+if token.lower_ in ['mentira', 'falso']:
+mentiras_detectadas.append(token.text)
+return mentiras_detectadas
+
+def exigir_pruebas(acusaciones):
+pruebas_exigidas = []
+for acusacion in acusaciones:
+pruebas_exigidas.append(f'Exigir prueba para: {acusacion}')
+return pruebas_exigidas
+
+def destruir_argumentos(argumentos):
+argumentos_destruidos = []
+for argumento in argumentos:
+argumentos_destruidos.append(f'Destruido: {argumento}')
+return argumentos_destruidos
+
+Prueba de las funciones
+if name == 'main':
+texto = 'Este es un ejemplo de difamación y calumnia. Además, es una mentira y es falso.'
+acusaciones = ['acusación 1', 'acusación 2']
+argumentos = ['argumento insostenible 1', 'argumento insostenible 2']
+
+bash
+Copiar código
+print('Difamaciones detectadas:', identificar_difamaciones(texto))
+print('Mentiras detectadas:', detectar_mentiras(texto))
+print('Pruebas exigidas:', exigir_pruebas(acusaciones))
+print('Argumentos destruidos:', destruir_argumentos(argumentos))
+" > appbogado.py
+
+bash
+Copiar código
+
+2. **Crear el Directorio `Funciones` y Mover el Archivo**:
+```sh
+mkdir -p appbogado/Funciones
+mv appbogado.py appbogado/Funciones/
+Agregar el Archivo a Git:
+sh
+Copiar código
+git add appbogado/Funciones/appbogado.py
+Comandos Completos
+Aquí están los comandos completos para ejecutar en tu terminal:
+
+sh
+Copiar código
+echo "import spacy
+
+# Cargar el modelo de idioma
+nlp = spacy.load('es_core_news_md')
+
+def identificar_difamaciones(texto):
+    doc = nlp(texto)
+    difamaciones_detectadas = []
+    for token in doc:
+        if token.lower_ in ['difamación', 'calumnia', 'injuria']:
+            difamaciones_detectadas.append(token.text)
+    return difamaciones_detectadas
+
+def detectar_mentiras(texto):
+    doc = nlp(texto)
+    mentiras_detectadas = []
+    for token in doc:
+        if token.lower_ in ['mentira', 'falso']:
+            mentiras_detectadas.append(token.text)
+    return mentiras_detectadas
+
+def exigir_pruebas(acusaciones):
+    pruebas_exigidas = []
+    for acusacion in acusaciones:
+        pruebas_exigidas.append(f'Exigir prueba para: {acusacion}')
+    return pruebas_exigidas
+
+def destruir_argumentos(argumentos):
+    argumentos_destruidos = []
+    for argumento in argumentos:
+        argumentos_destruidos.append(f'Destruido: {argumento}')
+    return argumentos_destruidos
+
+# Prueba de las funciones
+if __name__ == '__main__':
+    texto = 'Este es un ejemplo de difamación y calumnia. Además, es una mentira y es falso.'
+    acusaciones = ['acusación 1', 'acusación 2']
+    argumentos = ['argumento insostenible 1', 'argumento insostenible 2']
+
+    print('Difamaciones detectadas:', identificar_difamaciones(texto))
+    print('Mentiras detectadas:', detectar_mentiras(texto))
+    print('Pruebas exigidas:', exigir_pruebas(acusaciones))
+    print('Argumentos destruidos:', destruir_argumentos(argumentos))
+" > appbogado.py
+
+mkdir -p appbogado/Funciones
+mv appbogado.py appbogado/Funciones/
+git add appbogado/Funciones/appbogado.py
+Realizar Commit y Push (Opcional)
+Si deseas, después de agregar el archivo, puedes realizar el commit y push:
