@@ -1,4 +1,3 @@
-# Crear el archivo appbogado.py
 echo "import spacy
 from flask import Flask, request, jsonify
 
@@ -11,59 +10,59 @@ nlp = spacy.load('es_core_news_md')
 def identificar_difamaciones(texto):
     doc = nlp(texto)
     difamaciones_detectadas = []
-    for token en doc:
+    for token in doc:
         if token.lower_ in ['difamación', 'calumnia', 'injuria']:
             difamaciones_detectadas.append(token.text)
-    return difamaciones detectadas
+    return difamaciones_detectadas
 
-def detectar mentiras(texto):
+def detectar_mentiras(texto):
     doc = nlp(texto)
-    mentiras detectadas = []
-    for token en doc:
-        if token.lower_ en ['mentira', 'falso']:
-            mentiras detectadas.append(token.text)
-    return mentiras detectadas
+    mentiras_detectadas = []
+    for token in doc:
+        if token.lower_ in ['mentira', 'falso']:
+            mentiras_detectadas.append(token.text)
+    return mentiras_detectadas
 
-def exigir pruebas(acusaciones):
-    pruebas exigidas = []
-    for acusacion en acusaciones:
-        pruebas exigidas.append(f'Exigir prueba para: {acusacion}')
-    return pruebas exigidas
+def exigir_pruebas(acusaciones):
+    pruebas_exigidas = []
+    for acusacion in acusaciones:
+        pruebas_exigidas.append(f'Exigir prueba para: {acusacion}')
+    return pruebas_exigidas
 
-def destruir argumentos(argumentos):
-    argumentos destruidos = []
-    for argumento en argumentos:
-        argumentos destruidos.append(f'Destruido: {argumento}')
-    return argumentos destruidos
+def destruir_argumentos(argumentos):
+    argumentos_destruidos = []
+    for argumento in argumentos:
+        argumentos_destruidos.append(f'Destruido: {argumento}')
+    return argumentos_destruidos
 
 # Definir las rutas de la API
 @app.route('/difamaciones', methods=['POST'])
 def api_difamaciones():
     datos = request.get_json()
     texto = datos.get('texto', '')
-    resultado = identificar difamaciones(texto)
-    return jsonify({'difamaciones detectadas': resultado})
+    resultado = identificar_difamaciones(texto)
+    return jsonify({'difamaciones_detectadas': resultado})
 
 @app.route('/mentiras', methods=['POST'])
 def api_mentiras():
     datos = request.get_json()
     texto = datos.get('texto', '')
-    resultado es detectar mentiras(texto)
-    return jsonify({'mentiras detectadas': resultado})
+    resultado = detectar_mentiras(texto)
+    return jsonify({'mentiras_detectadas': resultado})
 
 @app.route('/pruebas', methods=['POST'])
 def api_pruebas():
-    datos es request.get_json()
-    acusaciones es datos.get('acusaciones', [])
-    resultado es exigir pruebas(acusaciones)
-    return jsonify({'pruebas exigidas': resultado})
+    datos = request.get_json()
+    acusaciones = datos.get('acusaciones', [])
+    resultado = exigir_pruebas(acusaciones)
+    return jsonify({'pruebas_exigidas': resultado})
 
 @app.route('/destruir', methods=['POST'])
 def api_destruir():
-    datos es request.get_json()
-    argumentos es datos.get('argumentos', [])
-    resultado es destruir argumentos(argumentos)
-    return jsonify({'argumentos destruidos': resultado})
+    datos = request.get_json()
+    argumentos = datos.get('argumentos', [])
+    resultado = destruir_argumentos(argumentos)
+    return jsonify({'argumentos_destruidos': resultado})
 
 if __name__ == '__main__':
     app.run(debug=True)
