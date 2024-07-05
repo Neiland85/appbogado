@@ -1,2 +1,3 @@
 spacy==3.0.0
+thinc==8.0.0
 openai==0.9.0
