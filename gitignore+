@@ -1,0 +1,45 @@
+# Archivos de sistema
+.DS_Store
+.bash_history
+.python_history
+.zsh_history
+.zsh_sessions/
+.anydesk/
+.composer/
+.dotnet/
+.gitconfig
+.jupyter/
+.keras/
+.lesshst
+.local/
+.m2/
+.npm-global/
+.npm/
+.npmrc
+.nuget/
+.redhat/
+.ssh/
+.symfony5/
+.templateengine/
+.vscode/
+.zshrc
+
+# Cachés y archivos temporales
+.cache/
+.pytest_cache/
+__pycache__/
+
+# Directorios específicos de configuraciones locales
+Applications/
+Desktop/
+Documents/
+Downloads/
+FOOS/
+GitHub_Restaurado/
+Library/
+Movies/
+Music/
+Pictures/
+Projects/
+Public/
+

@@ -20,3 +20,27 @@ venv/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+
+# Archivos específicos del sistema
+.bash_history
+.python_history
+.zsh_history
+.zsh_sessions/
+.anydesk/
+.composer/
+.dotnet/
+.gitconfig
+.jupyter/
+.keras/
+.lesshst
+.local/
+.m2/
+.npm-global/
+.npm/
+.npmrc
+.nuget/
+.redhat/
+.ssh/
+.symfony5/
+.templateengine/
+
