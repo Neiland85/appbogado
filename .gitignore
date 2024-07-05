@@ -1,28 +1,22 @@
+# Archivos de caché y configuración temporal
 .DS_Store
+.pytest_cache/
+__pycache__/
+
+# Entorno virtual
+env/
 venv/
-__pycache__/
+
+# Archivos de log
 *.log
-.DS_Store
-env/
-__pycache__/
-.DS_Store
-env/
-__pycache__/
-.DS_Store
-env/
-__pycache__/
-.DS_Store
-env/
-__pycache__/
-\#
-de
-__pycache__/
-.DS_Store
-env/
-__pycache__/
-.DS_Store
-env/
-__pycache__/
-.DS_Store
-env/
-__pycache__/
+
+# Archivos de compilación
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
