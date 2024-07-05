@@ -1,14 +1,3 @@
-# Importar bibliotecas necesarias
-import sys
-import os
-
-# Agregar el directorio del proyecto al path (ajusta la ruta según tu estructura de directorios)
-sys.path.append(os.path.abspath("../appbogado"))
-
-# Importar bibliotecas necesarias
-import pytest
-
-
 # Código del archivo tests/test_legal_processing.py
 
 def test_limpiar_texto():
@@ -45,4 +34,3 @@ def test_detectar_ayuda_y_compañerismo():
 
 # Ejecutar todas las pruebas
 pytest.main([__file__])
-

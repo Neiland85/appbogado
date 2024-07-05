@@ -1,8 +1,0 @@
-from appbogado.legal_processing import leer_texto_legal, procesar_texto_legal
-
-# Leer un texto legal desde un archivo
-texto = leer_texto_legal('ruta/al/texto_legal.txt')
-# Procesar el texto legal
-doc = procesar_texto_legal(texto)
-print(doc)
-
