@@ -1,0 +1,19 @@
+{
+  "name": "appbogado",
+  "version": "1.0.0",
+  "description": "Appbogado es un bot diseñado para ayudar a auto-defenderse en un juicio utilizando la Constitución Española y otras leyes relevantes. Utiliza técnicas avanzadas de procesamiento de lenguaje natural (NLP) para detectar mentiras, difamaciones, exigir pruebas y destruir legalmente argumentos insostenibles.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
