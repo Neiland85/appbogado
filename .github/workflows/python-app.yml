@@ -1,40 +1,29 @@
-name: Node.js Application
+name: Python application
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main.js ]
   pull_request:
-    branches: [ main ]
+    branches: [ main.js ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Check Repository
-      uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v3 
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
+    - name: Set up Python
+      uses: actions/setup-python@v3 
       with:
-        node-version: '16'
+        python-version: '3.x'
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: |
-        npm install
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Run Tests
+    - name: Run tests
       run: |
-        npm test
-
-    - name: Upload Artifact
-      if: success()
-      uses: actions/upload-artifact@v2
-      with:
-        name: test
-        path: path/to/your/artifacts
-
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '7.0.x'
+        pytest
