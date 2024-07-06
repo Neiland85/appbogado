@@ -1,4 +1,4 @@
-name: Aplicación Node.js
+name: Python application
 
 on:
   push:
@@ -11,18 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Comprobar repositorio
-      uses: actions/checkout@v2
+    - name: Check out repository
+      uses: actions/checkout@v3
 
-    - name: Configurar Node.js
-      uses: actions/setup-node@v2
+    - name: Set up Python
+      uses: actions/setup-python@v3
       with:
-        node-version: '16'
+        python-version: '3.x'
 
-    - name: Instalar dependencias
+    - name: Install dependencies
       run: |
-        npm install
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Ejecutar pruebas
+    - name: Run tests
       run: |
-        npm test
+        pytest
