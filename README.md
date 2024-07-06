@@ -1,9 +1,7 @@
 # Appbogado
-
   Appbogado es un bot diseñado para ayudar a auto-defenderse en un juicio utilizando la Constitución Española y otras leyes relevantes. Utiliza técnicas avanzadas de procesamiento de lenguaje natural (NLP) para detectar mentiras, difamaciones, exigir pruebas y destruir legalmente argumentos insostenibles.
 
 ## Características
-
 - **Detección de Mentiras**: Identifica declaraciones falsas utilizando modelos NLP entrenados.
 - **Identificación de Difamaciones**: Detecta comentarios difamatorios en los textos legales.
 - **Exigencia de Pruebas**: Solicita pruebas concretas para respaldar acusaciones.
@@ -31,6 +29,4 @@ requirements.txt
 Defamation Identification: Detects defamatory comments in legal texts.
 Evidence Demand: Requests concrete evidence to support accusations.
 Destruction of Unsustainable Arguments: Provides solid legal arguments to counter unfounded accusations.
-# appbogado
-# appbogado
-# appbogado
+
