@@ -1,10 +1,32 @@
-k# Archivos de sistema
+# Archivos de caché y configuración temporal
 .DS_Store
+.pytest_cache/
+__pycache__/
+
+# Entorno virtual
+env/
+venv/
+
+# Archivos de log
+*.log
+
+# Archivos de compilación
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de configuración de IDEs
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos de sistema
 .bash_history
 .python_history
 .zsh_history
 .zsh_sessions/
-.anydesk/
+anydesk/
 .composer/
 .dotnet/
 .gitconfig
@@ -27,7 +49,7 @@ k# Archivos de sistema
 
 # Cachés y archivos temporales
 .cache/
-.pytest_cache/
+pytest_cache/
 __pycache__/
 
 # Directorios específicos de configuraciones locales
@@ -42,4 +64,3 @@ Movies/
 Music/
 Pictures/
 Projects/
-Public/
