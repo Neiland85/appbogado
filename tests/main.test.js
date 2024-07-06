@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../tests/main'); 
+const app = require('../main');
 
 describe('POST /detectar_idiomas', () => {
   it('debería detectar idiomas correctamente', async () => {
