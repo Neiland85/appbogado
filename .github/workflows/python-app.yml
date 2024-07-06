@@ -27,10 +27,6 @@ jobs:
       run: |
         npm test
 
-    - name: Mostrar detalles del error si los hay
-      if: failure()
-      run: echo "Error: ${{ failure() }}"
-
     - name: Subir artefacto
       if: success()
       uses: actions/upload-artifact@v2
