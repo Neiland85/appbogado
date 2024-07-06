@@ -1,47 +1,28 @@
-# Objetivo del Prompt
-Desarrollar un código para el bot "appbogado" que me ayudará a auto-defenderme en un juicio. El código debe estar escrito en español, seguir buenas prácticas de programación, y realizar operaciones de git (add, commit, pull, push) correctamente en la rama `main.js`. Además, debe estar adaptado para un entorno macOS con la versión de sistema operativo Sonoma 14.5 y especificaciones de hardware detalladas. El bot debe usar la Constitución Española y otras leyes relevantes para detectar mentiras, difamaciones y exigir pruebas, además de proporcionar funcionalidades para "destruir legalmente" argumentos insostenibles.
+name: Python application
 
-## Requisitos Específicos
-1. El código debe seguir buenas prácticas de programación.
-2. Todas las operaciones de git (add, commit, pull, push) deben realizarse en la rama `main.js`.
-3. Utilizar la Constitución Española y otras leyes relevantes.
-4. Especializar las librerías NLP para detectar mentiras, difamaciones, exigir pruebas y "destruir legalmente" argumentos insostenibles.
-5. Crear un archivo `.gitignore` adaptado para macOS con Sonoma 14.5.
-6. Implementar el estilo de defensa de Pablo Ródenas y Rodenas Abogados.
+on:
+  push:
+    branches: [ main.js ]
+  pull_request:
+    branches: [ main.js ]
 
-## Estructura del Código
-### Inicialización del Proyecto
-1. Crear un nuevo repositorio en GitHub.
-2. Inicializar el repositorio con un README.md descriptivo.
+jobs:
+  build:
 
-### Instalación y Configuración de Dependencias
-1. Crear un entorno virtual e instalar las dependencias necesarias para NLP y manipulación de texto.
-2. Configurar un archivo `.gitignore` específico para macOS con Sonoma 14.5.
+    runs-on: ubuntu-latest
 
-### Implementación del Bot
-1. Escribir funciones para la lectura y procesamiento de texto legal.
-2. Implementar modelos NLP para:
-   - Detectar mentiras.
-   - Identificar difamaciones.
-   - Exigir pruebas.
-   - Crear argumentos para "destruir legalmente" acusaciones infundadas.
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
 
-### Pruebas y Validación
-1. Escribir tests unitarios para cada función implementada.
-2. Asegurar la cobertura del código con pruebas.
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-### Ejecución de Commits y Push
-1. Realizar commits frecuentes con mensajes descriptivos.
-2. Sincronizar con el repositorio remoto (pull y push) periódicamente.
-
-### Código Ejemplo
-#### Creación del Repositorio y README.md
-```sh
-# Crear un nuevo repositorio en GitHub
-echo "# appbogado" >> README.md
-git init
-git add README.md
-git commit -m "Initial commit"
-git branch -M main.js
-git remote add origin [URL_del_Repositorio]
-git push -u origin main.js
+    - name: Run tests
+      run: |
+        pytest
