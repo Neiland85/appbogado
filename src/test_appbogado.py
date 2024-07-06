@@ -43,3 +43,13 @@ def test_calcular_transparencia_judicial():
     transparencia = calcular_transparencia_judicial(0.8, 0.9, 0.7, 0.8, 0.9)
     assert transparencia > 0
 
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import pytest
+from appbogado.legal_processing import leer_texto_legal, procesar_texto_legal
+
+def test_example():
+    assert leer_texto_legal("texto") is not None
+
