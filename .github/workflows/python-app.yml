@@ -1,4 +1,4 @@
-name: Aplicación Node.js
+name: Node.js Application
 
 on:
   push:
@@ -11,34 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Comprobar repositorio
+    - name: Check Repository
       uses: actions/checkout@v2
 
-    - name: Configurar Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '16'
 
-    - name: Instalar dependencias
+    - name: Install Dependencies
       run: |
         npm install
 
-    - name: Ejecutar pruebas
+    - name: Run Tests
       run: |
         npm test
 
-    - name: Mostrar detalles del error si los hay
-      "if: failure()" 
-      run: echo "Error: ${{ failure() }}"
-
-    - name: Subir artefacto
+    - name: Upload Artifact
       if: success()
       uses: actions/upload-artifact@v2
       with:
         name: test
-        path: ruta/a/tus/artefactos
+        path: path/to/your/artifacts
 
-    - name: Configurar SDK de .NET Core
+    - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '7.0.x'
