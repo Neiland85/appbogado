@@ -7,5 +7,10 @@
 			"name": "appbogado",
 			"path": "../../../../appbogado/appbogado"
 		}
-	]
+	],
+	"settings": {
+		"editor.defaultFormatter": "ms-python.python",
+		"editor.defaultFoldingRangeProvider": "ms-python.python",
+		"github.copilot.advanced": {}
+	}
 }
