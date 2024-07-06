@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../src/main'); // Ajusta la ruta según la ubicación de tu archivo main.js
+const app = require('../tests/main'); 
 
 describe('POST /detectar_idiomas', () => {
   it('debería detectar idiomas correctamente', async () => {
