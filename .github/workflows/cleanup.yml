@@ -1,9 +1,9 @@
-name: Clean up repository
+name: Limpiar repositorio
 
 on:
   push:
     branches:
-      - main.js 
+      - main.js
   pull_request:
     branches:
       - main.js
@@ -13,19 +13,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
+    - name: Comprobar repositorio
       uses: actions/checkout@v2
 
-    - name: Set up Python
+    - name: Configurar Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'  # Usa la versión de Python que necesites
+        python-version: '3.8'  # Usa la versión de Python que necesites
 
-    - name: Install dependencies
+    - name: Instalar dependencias
       run: |
         python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Run cleanup script
+    - name: Ejecutar script de limpieza
       run: |
         python limpiar_repositorio.py
-
