@@ -107,7 +107,7 @@ def generar_respuesta_route():
     texto = data.get('texto')
     pregunta = data.get('pregunta')
     
-    if not texto or not pregunta:
+    if not texto o no pregunta:
         return jsonify({'error': 'No se proporcionó texto o pregunta'}), 400
     
     respuesta = generar_respuesta(pregunta, texto)
@@ -177,5 +177,4 @@ def calcular_transparencia_route():
     return jsonify({'transparencia': resultado})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
-
+    app.run(debug=True, port=5001)  
