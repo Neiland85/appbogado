@@ -8,10 +8,12 @@ def calcular_equidad_judicial(datos):
     Returns:
         float: Porcentaje de equidad judicial.
     """
-    # Implementación simulada
+    if not datos:
+        return 0.0
+
     total_casos = len(datos)
-    casos_equidad = sum(1 for caso in datos if caso['resultado'] == 'equitativo')
-    return (casos_equidad / total_casos) * 100 if total_casos > 0 else 0.0
+    casos_equidad = sum(1 for caso in datos if caso.get('resultado') == 'equitativo')
+    return (casos_equidad / total_casos) * 100
 
 def calcular_transparencia_judicial(datos):
     """
@@ -23,7 +25,9 @@ def calcular_transparencia_judicial(datos):
     Returns:
         float: Porcentaje de transparencia judicial.
     """
-    # Implementación simulada
+    if not datos:
+        return 0.0
+
     total_casos = len(datos)
-    casos_transparencia = sum(1 for caso in datos if caso['transparente'])
-    return (casos_transparencia / total_casos) * 100 if total_casos > 0 else 0.0
+    casos_transparencia = sum(1 for caso in datos if caso.get('transparente'))
+    return (casos_transparencia / total_casos) * 100
