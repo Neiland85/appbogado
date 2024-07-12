@@ -1,18 +1,26 @@
 import unittest
-from appbogado import detectar_idiomas, extraer_argumentos
+from app import app
 
-class TestAppbogado(unittest.TestCase):
+class TestApp(unittest.TestCase):
 
-    def test_detectar_idiomas(self):
-        textos = ['es un texto', 'this is a text']
-        result = detectar_idiomas(textos)
-        self.assertEqual(result, ['español', 'inglés'])
+    @classmethod
+    def setUpClass(cls):
+        cls.client = app.test_client()
+        cls.client.testing = True
 
-    def test_extraer_argumentos(self):
-        textos = ['es un texto', 'this is a text']
-        result = extraer_argumentos(textos)
-        expected = [{'texto': 'es un texto', 'argumento': 'simulado'}, {'texto': 'this is a text', 'argumento': 'simulado'}]
-        self.assertEqual(result, expected)
+    def test_process_no_data(self):
+        response = self.client.post('/process')
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('No text provided', str(response.data))
+
+    def test_process_with_data(self):
+        response = self.client.post('/process', json={'text': 'Esto es una prueba.'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('tokens', response.json)
+
+    def test_process_invalid_json(self):
+        response = self.client.post('/process', data='Invalid JSON')
+        self.assertEqual(response.status_code, 400)
 
 if __name__ == '__main__':
     unittest.main()
