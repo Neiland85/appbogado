@@ -2,22 +2,25 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-app.post('/detectar_idiomas', (req, res) => {
+const handlePostRequest = (req, res, callback) => {
   const { textos } = req.body;
   if (textos) {
-    const idiomasDetectados = textos.map(texto => texto.includes('es') ? 'español' : 'inglés');
-    return res.json({ idiomas_detectados: idiomasDetectados });
+    const result = callback(textos);
+    return res.json(result);
   }
   return res.status(400).json({ error: 'No se proporcionaron textos' });
+};
+
+app.post('/detectar_idiomas', (req, res) => {
+  handlePostRequest(req, res, textos => ({
+    idiomas_detectados: textos.map(texto => texto.includes('es') ? 'español' : 'inglés')
+  }));
 });
 
 app.post('/extraer_argumentos', (req, res) => {
-  const { textos } = req.body;
-  if (textos) {
-    const argumentos = textos.map(texto => ({ texto, argumento: 'simulado' }));
-    return res.json({ argumentos });
-  }
-  return res.status(400).json({ error: 'No se proporcionaron textos' });
+  handlePostRequest(req, res, textos => ({
+    argumentos: textos.map(texto => ({ texto, argumento: 'simulado' }))
+  }));
 });
 
 app.listen(3000, () => {
