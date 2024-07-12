@@ -17,7 +17,7 @@ appbogado/
 ├── init.py # Archivo de inicialización del módulo.
 ├── legal_processing.py # Funciones para la lectura y procesamiento de textos legales.
 ├── nlp_models.py # Modelos NLP para la detección de mentiras y difamaciones.
-├── defense_strategies.py# Estrategias legales para exigir pruebas y destruir argumentos insostenibles.
+├── defense_strategies.py # Estrategias legales para exigir pruebas y destruir argumentos insostenibles.
 ├── .github/
 │ └── workflows/ # Directorio que contiene configuraciones de workflows de GitHub Actions.
 │ └── python-app.yml # Configuración para la ejecución automática de pruebas.
@@ -26,8 +26,6 @@ appbogado/
 │ └── test_legal_processing.py
 ├── README.md # Este archivo, que proporciona una descripción general del proyecto.
 └── requirements.txt # Archivo que lista las dependencias necesarias para el proyecto.
-
-
 
 ## Requisitos
 
@@ -40,5 +38,4 @@ appbogado/
 1. Clona el repositorio:
 
    ```sh
-   git clone https://github.com/Neiland85/appbogado.git
-   cd appbogado
+
