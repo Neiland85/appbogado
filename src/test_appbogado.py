@@ -1,55 +1,39 @@
-# test_appbogado.py
+import unittest
+from app import app
 
-import pytest
-from appbogado.legal_processing import leer_texto_legal, procesar_texto_legal
-from appbogado.nlp_models import detectar_mentiras, identificar_difamaciones
-from appbogado.defense_strategies import exigir_pruebas, destruir_argumento_insostenible
-from appbogado.evaluation_models import calcular_equidad_judicial, calcular_transparencia_judicial
+class TestApp(unittest.TestCase):
 
-def test_leer_texto_legal():
-    texto = leer_texto_legal("sample_legal.txt")
-    assert isinstance(texto, str)
+    @classmethod
+    def setUpClass(cls):
+        cls.client = app.test_client()
+        cls.client.testing = True
 
-def test_procesar_texto_legal():
-    texto = "Este es un texto de prueba."
-    doc = procesar_texto_legal(texto)
-    assert doc is not None
+    def post_request(self, endpoint, json_data):
+        return self.client.post(endpoint, json=json_data)
 
-def test_detectar_mentiras():
-    texto = "Esto es una mentira."
-    resultado = detectar_mentiras(texto)
-    assert len(resultado) > 0
+    def test_process_no_data(self):
+        response = self.post_request('/process', None)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('No se proporcionó texto', str(response.data))
 
-def test_identificar_difamaciones():
-    texto = "Esto es difamación."
-    resultado = identificar_difamaciones(texto)
-    assert len(resultado) > 0
+    def test_process_with_data(self):
+        response = self.post_request('/process', {'text': 'Esto es una prueba.'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('tokens', response.json)
 
-def test_exigir_pruebas():
-    acusacion = "Usted es culpable de fraude."
-    respuesta = exigir_pruebas(acusacion)
-    assert "proporcione pruebas" in respuesta
+    def test_process_invalid_json(self):
+        response = self.client.post('/process', data='Invalid JSON')
+        self.assertEqual(response.status_code, 400)
 
-def test_destruir_argumento_insostenible():
-    acusacion = "Usted es culpable de fraude."
-    respuesta = destruir_argumento_insostenible(acusacion)
-    assert "carece de pruebas sólidas" in respuesta
+    def test_detectar_emociones(self):
+        response = self.post_request('/detectar_emociones', {'texto': 'Estoy muy feliz hoy.'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('emociones', response.json)
 
-def test_calcular_equidad_judicial():
-    equidad = calcular_equidad_judicial(0.8, 0.9, 0.7, 2.0, 0.9)
-    assert equidad > 0
+    def test_clasificar_intenciones(self):
+        response = self.post_request('/clasificar_intenciones', {'texto': 'Quiero aprender a programar.'})
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('intenciones', response.json)
 
-def test_calcular_transparencia_judicial():
-    transparencia = calcular_transparencia_judicial(0.8, 0.9, 0.7, 0.8, 0.9)
-    assert transparencia > 0
-
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-import pytest
-from appbogado.legal_processing import leer_texto_legal, procesar_texto_legal
-
-def test_example():
-    assert leer_texto_legal("texto") is not None
-
+if __name__ == '__main__':
+    unittest.main()
