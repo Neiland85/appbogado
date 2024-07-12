@@ -29,6 +29,7 @@ def handle_request(route_function):
             return jsonify({'error': 'No se proporcionó texto'}), 400
         
         return route_function(texto, data)
+    wrapper.__name__ = route_function.__name__ + "_wrapped"
     return wrapper
 
 # Routes for legal_processing functions
