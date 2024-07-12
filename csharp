@@ -1,0 +1,24 @@
+appbogado/
+├── .github/
+│   └── workflows/
+│       └── python-app.yml
+├── .ipynb_checkpoints/
+├── node_modules/
+├── src/
+│   └── main.js
+├── tests/
+│   ├── test_appbogado.py
+│   └── test_legal_processing.py
+├── .gitignore
+├── LICENSE
+├── README.md
+├── app.py
+├── appbogado.code-workspace
+├── appbogado_analysis.ipynb
+├── limpiar_repositorio.py
+├── package-lock.json
+├── package.json
+├── requirements.in
+├── requirements.txt
+└── setup.py  # Este archivo es opcional, para empaquetar el proyecto si es necesario.
+
