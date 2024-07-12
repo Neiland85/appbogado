@@ -191,3 +191,22 @@ def calcular_transparencia_route():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)  
+
+# src/app.py
+
+from legal_processing import detectar_mentiras, detectar_difamaciones
+
+def main():
+    texto = "Aquí va el texto legal que quieres analizar."
+    mentiras = detectar_mentiras(texto)
+    difamaciones = detectar_difamaciones(texto)
+
+    print("Mentiras detectadas:")
+    print(mentiras)
+
+    print("\nDifamaciones detectadas:")
+    print(difamaciones)
+
+if __name__ == "__main__":
+    main()
+

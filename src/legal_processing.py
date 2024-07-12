@@ -127,3 +127,27 @@ def detectar_ayuda_y_compañerismo(texto):
     """
     palabras_clave_ayuda = ['ayuda', 'solidaridad', 'compañerismo']
     return [palabra for palabra in palabras_clave_ayuda if palabra in texto]
+
+# src/legal_processing.py
+
+import openai
+
+# Configura tu clave API de OpenAI
+openai.api_key = 'sk-None-B6QFF6hAVv2tTz0yzAhST3BlbkFJeUFGBR95yyjz1AfohP2J'
+
+def detectar_mentiras(texto):
+    response = openai.Completion.create(
+        engine="davinci-codex",
+        prompt=f"Detecta mentiras en el siguiente texto: {texto}",
+        max_tokens=150
+    )
+    return response.choices[0].text.strip()
+
+def detectar_difamaciones(texto):
+    response = openai.Completion.create(
+        engine="davinci-codex",
+        prompt=f"Detecta difamaciones en el siguiente texto: {texto}",
+        max_tokens=150
+    )
+    return response.choices[0].text.strip()
+
