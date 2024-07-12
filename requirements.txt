@@ -1,6 +1,6 @@
 Flask
 spacy
-text blob
+textblob
 transformers
 iniconfig==2.0.0
 packaging==24.1
