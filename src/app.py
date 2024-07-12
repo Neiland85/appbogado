@@ -1,74 +1,74 @@
-# app.py
-
 from flask import Flask, request, jsonify
-from appbogado.legal_processing import leer_texto_legal, procesar_texto_legal
-from appbogado.nlp_models import detectar_mentiras, identificar_difamaciones
+from appbogado.legal_processing import (
+    leer_texto_legal, procesar_texto_legal, limpiar_texto, 
+    identificar_entidades, detectar_sentencias_clave, analizar_sentimiento,
+    detectar_anomalias, detectar_difamacion, detectar_ayuda_y_compañerismo
+)
+from appbogado.nlp_models import (
+    detectar_mentiras, identificar_difamaciones, clasificar_texto,
+    detectar_emociones, clasificar_intenciones, extraer_resumen, generar_respuesta
+)
 from appbogado.defense_strategies import exigir_pruebas, destruir_argumento_insostenible
 from appbogado.evaluation_models import calcular_equidad_judicial, calcular_transparencia_judicial
+from appbogado.audio_utils import AudioHandler
 
 app = Flask(__name__)
+audio_handler = AudioHandler()
+
+def handle_request(route_function):
+    def wrapper():
+        data = request.json
+        texto = data.get('texto')
+        
+        if not texto:
+            return jsonify({'error': 'No se proporcionó texto'}), 400
+        
+        return route_function(texto)
+    return wrapper
 
 @app.route('/procesar', methods=['POST'])
-def procesar():
-    data = request.json
-    texto = data.get('texto')
+@handle_request
+def procesar(texto):
+    texto_limpio = limpiar_texto(texto)
+    doc = procesar_texto_legal(texto_limpio)
+    entidades = identificar_entidades(doc)
+    sentimiento = analizar_sentimiento(texto_limpio)
+    anomalías = detectar_anomalias(texto_limpio)
+    difamaciones = detectar_difamacion(texto_limpio)
+    ayuda = detectar_ayuda_y_compañerismo(texto_limpio)
     
-    if not texto:
-        return jsonify({'error': 'No se proporcionó texto'}), 400
-    
-    doc = procesar_texto_legal(texto)
-    mentiras = detectar_mentiras(texto)
-    difamaciones = identificar_difamaciones(texto)
     respuesta = {
-        'mentiras': mentiras,
+        'entidades': entidades,
+        'sentimiento': sentimiento,
+        'anomalías': anomalías,
         'difamaciones': difamaciones,
+        'ayuda': ayuda,
     }
     return jsonify(respuesta)
 
-@app.route('/defensa', methods=['POST'])
-def defensa():
-    data = request.json
-    acusacion = data.get('acusacion')
-    
-    if not acusacion:
-        return jsonify({'error': 'No se proporcionó acusación'}), 400
-    
-    respuesta = {
-        'exigir_pruebas': exigir_pruebas(acusacion),
-        'destruir_argumento': destruir_argumento_insostenible(acusacion),
-    }
-    return jsonify(respuesta)
+@app.route('/detectar_emociones', methods=['POST'])
+@handle_request
+def detectar_emociones_route(texto):
+    emociones = detectar_emociones(texto)
+    return jsonify({'emociones': emociones})
 
-@app.route('/evaluar_equidad', methods=['POST'])
-def evaluar_equidad():
-    data = request.json
-    imparcialidad = data.get('imparcialidad')
-    acceso = data.get('acceso')
-    consistencia = data.get('consistencia')
-    tiempo = data.get('tiempo')
-    derechos = data.get('derechos')
-    
-    if not (imparcialidad and acceso and consistencia and tiempo and derechos):
-        return jsonify({'error': 'Faltan parámetros'}), 400
-    
-    equidad = calcular_equidad_judicial(imparcialidad, acceso, consistencia, tiempo, derechos)
-    return jsonify({'equidad_judicial': equidad})
+@app.route('/clasificar_intenciones', methods=['POST'])
+@handle_request
+def clasificar_intenciones_route(texto):
+    intenciones = clasificar_intenciones(texto)
+    return jsonify({'intenciones': intenciones})
 
-@app.route('/evaluar_transparencia', methods=['POST'])
-def evaluar_transparencia():
-    data = request.json
-    acceso_info = data.get('acceso_info')
-    justificacion = data.get('justificacion')
-    publicacion = data.get('publicacion')
-    independencia = data.get('independencia')
-    rendicion = data.get('rendicion')
-    
-    if not (acceso_info and justificacion and publicacion and independencia and rendicion):
-        return jsonify({'error': 'Faltan parámetros'}), 400
-    
-    transparencia = calcular_transparencia_judicial(acceso_info, justificacion, publicacion, independencia, rendicion)
-    return jsonify({'transparencia_judicial': transparencia})
+@app.route('/extraer_resumen', methods=['POST'])
+@handle_request
+def extraer_resumen_route(texto):
+    resumen = extraer_resumen(texto)
+    return jsonify({'resumen': resumen})
+
+@app.route('/generar_respuesta', methods=['POST'])
+@handle_request
+def generar_respuesta_route(texto):
+    respuesta = generar_respuesta(texto)
+    return jsonify({'respuesta': respuesta})
 
 if __name__ == '__main__':
     app.run(debug=True)
-
