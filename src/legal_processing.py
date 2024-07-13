@@ -35,3 +35,23 @@ def procesar_texto_legal(texto):
 def limpiar_texto(texto):
     # Implementación de la función
     pass
+
+def identificar_entidades(doc):
+    # Implementación de la función
+    pass
+
+def analizar_sentimiento(texto):
+    # Implementación de la función
+    pass
+
+def detectar_anomalias(texto):
+    # Implementación de la función
+    pass
+
+def detectar_difamacion(texto):
+    # Implementación de la función
+    pass
+
+def detectar_ayuda_y_compañerismo(texto):
+    # Implementación de la función
+    pass
