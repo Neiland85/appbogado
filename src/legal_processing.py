@@ -23,3 +23,15 @@ def detectar_difamaciones(texto):
     )
     return response.choices[0].text.strip()
 
+def leer_texto_legal(ruta_archivo):
+    # Implementación de la función
+    with open(ruta_archivo, 'r') as file:
+        return file.read()
+
+def procesar_texto_legal(texto):
+    # Implementación de la función
+    pass
+
+def limpiar_texto(texto):
+    # Implementación de la función
+    pass
