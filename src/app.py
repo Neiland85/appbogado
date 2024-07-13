@@ -102,28 +102,14 @@ def extraer_resumen_route(texto, data):
     return jsonify({'resumen': resumen})
 
 @app.route('/generar_respuesta', methods=['POST'])
-
-from legal_processing import detectar_mentiras, detectar_difamaciones
-def generar_respuesta_route():
-    data = request.json
-    texto = data.get('Por agarrar a su padre del cuello con una mano y con la otra, con el puño cerrado, levantado hacia atrás amenazando aún amenazadoramente para después bajarlo hacia la cara de su padre y decirle que te mato y por otro lado por decirle a la cuidadora de su padre tú aquí no te quedas a la vez que se pasaba un dedo de la mano por el cuello y la llevaba de oreja a oreja, dando a entender que le iba a rebanar el cuello')
-    pregunta = data.get('Como es posible que esta historia salga ahora mientras mis hermanos ya habían utilizado misma histria hace dos años?Como e spsible que aportand yo el video de la cuidadra intentando apuñalarme, dnde en el video aportado aguanto la puerta para impedirle avanzar y apuñalarme y con la otra mano sujeto el movil haciendo el video?, adenmás de ser yo quien llama a la policia?')
-    
+@handle_request
+def generar_respuesta_route(texto, data):
+    pregunta = data.get('pregunta')
     if not texto or not pregunta:
-        print("El texto o la pregunta no pueden estar vacíos.")
-        return
+        return jsonify({'error': 'El texto o la pregunta no pueden estar vacíos'}), 400
 
-    mentiras = detectar_mentiras(texto)
-    difamaciones = detectar_difamaciones(texto)
-
-    print("Mentiras detectadas:")
-    print(mentiras)
-
-    print("\nDifamaciones detectadas:")
-    print(difamaciones)
-
-if __name__ == "__main__":
-    main()
+    respuesta = generar_respuesta(texto, pregunta)
+    return jsonify({'respuesta': respuesta})
 
 # Routes for defense_strategies functions
 @app.route('/exigir_pruebas', methods=['POST'])
@@ -190,22 +176,3 @@ def calcular_transparencia_route():
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)  
-
-# src/app.py
-
-from legal_processing import detectar_mentiras, detectar_difamaciones
-
-def main():
-    texto = "Aquí va el texto legal que quieres analizar."
-    mentiras = detectar_mentiras(texto)
-    difamaciones = detectar_difamaciones(texto)
-
-    print("Mentiras detectadas:")
-    print(mentiras)
-
-    print("\nDifamaciones detectadas:")
-    print(difamaciones)
-
-if __name__ == "__main__":
-    main()
-
